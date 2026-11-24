@@ -56,8 +56,56 @@ if 'resultado' in st.session_state:
     st.subheader('03 / O que influenciou a previsão?')
     df=drivers.copy(); df['Fator']=df['Variável'].map(LABELS); df['Impacto']=np.where(df['Contribuição (p.p.)']>0,'Aumenta',np.where(df['Contribuição (p.p.)']<0,'Reduz','Neutro'))
     for _,r in df.head(3).iterrows(): st.write(f"**{r['Fator']}** — {r['Impacto']} o score: {r['Contribuição (p.p.)']:+.2f} p.p.")
-    chart=alt.Chart(df).mark_bar().encode(x=alt.X('Contribuição (p.p.):Q'),y=alt.Y('Fator:N',sort=df['Fator'].tolist(),title=None),color=alt.Color('Impacto:N',scale=alt.Scale(domain=['Aumenta','Reduz','Neutro'],range=['#dc2626','#15803d','#9ca3af'])),tooltip=['Fator','Impacto',alt.Tooltip('Contribuição (p.p.):Q',format='+.2f')]).properties(height=350)
-    st.altair_chart(chart,use_container_width=True)
+
+    # Preparação dos dados para visualização
+    df_grafico = df.rename(
+        columns={'Contribuição (p.p.)': 'contribuicao_pp'}
+    ).copy()
+
+    df_grafico['contribuicao_pp'] = pd.to_numeric(
+        df_grafico['contribuicao_pp'],
+        errors='raise'
+    )
+
+    # Gráfico horizontal dos drivers de risco
+    chart = alt.Chart(df_grafico).mark_bar(
+        cornerRadiusEnd=3,
+        size=22
+    ).encode(
+        x=alt.X(
+            'contribuicao_pp:Q',
+            title='Contribuição (pontos percentuais)',
+            scale=alt.Scale(zero=True)
+        ),
+        y=alt.Y(
+            'Fator:N',
+            sort=df_grafico['Fator'].tolist(),
+            title=None,
+            axis=alt.Axis(labelLimit=300)
+        ),
+        color=alt.Color(
+            'Impacto:N',
+            scale=alt.Scale(
+                domain=['Aumenta', 'Reduz', 'Neutro'],
+                range=['#DC2626', '#15803D', '#9CA3AF']
+            ),
+            legend=alt.Legend(title='Impacto')
+        ),
+        tooltip=[
+            alt.Tooltip('Fator:N'),
+            alt.Tooltip('Impacto:N'),
+            alt.Tooltip(
+                'contribuicao_pp:Q',
+                title='Contribuição (p.p.)',
+                format='+.2f'
+            )
+        ]
+    ).properties(
+        height=400
+    )
+
+    st.altair_chart(chart, use_container_width=True)
+
     st.caption('Contribuições aproximadas por permutações de Shapley, relativas à referência; não indicam causalidade.')
     with st.expander('Detalhes e dados da última análise'):
         st.dataframe(df[['Fator','Valor','Contribuição (p.p.)','Impacto']],hide_index=True)

@@ -5,6 +5,13 @@
 
 **Challenge SOMPO — Machine Learning — Sprint 4**
 
+## Integrantes do grupo
+
+- Aline Delphino Chiaramonte — RM569860
+- Gabriel Gomes dos Santos — RM573836
+- Gustavo Luiz Vilella Santin — RM573213
+- Victor Dias Rodrigues Bandeira de Azevedo — RM574108
+
 ## 1. Sobre o projeto
 
 O SOMPO Risk Analytics é uma solução baseada em Machine Learning desenvolvida para estimar o risco de sinistros em equipamentos agrícolas, considerando características operacionais, ambientais e históricas.

@@ -153,6 +153,16 @@ A solução não substitui avaliações técnicas ou atuariais.
 - Monitoramento do desempenho;
 - Integração com sistemas corporativos.
 
+## 15. Documentação final da Sprint 4
+
+Os materiais finais do projeto estão disponíveis neste repositório:
+
+- [Apresentação final do projeto (PDF)](./SOMPO_Sprint4_Apresentacao_Final.pdf)
+- [Notebook de Machine Learning - Sprint 4](./SPRINT4_Machine_Learning.ipynb)
+- [Aplicação interativa - SOMPO Risk Analytics](https://sompo-risk-analytics.streamlit.app/)
+
+A documentação reúne o desenvolvimento do modelo, os resultados obtidos, a estratégia de explicabilidade e a implantação da solução.
+
 ---
 
 **Challenge SOMPO | Machine Learning | Sprint 4**

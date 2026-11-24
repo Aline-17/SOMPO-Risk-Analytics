@@ -1,0 +1,80 @@
+{
+    "tipo_operacao": {
+        "tipo": "categorico",
+        "categorias": [
+            "campo",
+            "transporte"
+        ]
+    },
+    "velocidade_media": {
+        "tipo": "numerico",
+        "minimo": 10.0,
+        "maximo": 69.0,
+        "mediana": 38.0,
+        "dtype": "int64"
+    },
+    "tempo_uso_anos": {
+        "tipo": "numerico",
+        "minimo": 1.0,
+        "maximo": 14.0,
+        "mediana": 8.0,
+        "dtype": "int64"
+    },
+    "distancia_percorrida_km": {
+        "tipo": "numerico",
+        "minimo": 50.0,
+        "maximo": 999.0,
+        "mediana": 536.0,
+        "dtype": "int64"
+    },
+    "chuva": {
+        "tipo": "categorico",
+        "categorias": [
+            "nao",
+            "sim"
+        ]
+    },
+    "proximidade_agua": {
+        "tipo": "categorico",
+        "categorias": [
+            "nao",
+            "sim"
+        ]
+    },
+    "temperatura": {
+        "tipo": "numerico",
+        "minimo": 15.0,
+        "maximo": 39.0,
+        "mediana": 27.0,
+        "dtype": "int64"
+    },
+    "operacao_noturna": {
+        "tipo": "categorico",
+        "categorias": [
+            "nao",
+            "sim"
+        ]
+    },
+    "regiao_risco": {
+        "tipo": "categorico",
+        "categorias": [
+            "alta",
+            "baixa",
+            "media"
+        ]
+    },
+    "historico_sinistro": {
+        "tipo": "categorico",
+        "categorias": [
+            "nao",
+            "sim"
+        ]
+    },
+    "manutencao_atrasada": {
+        "tipo": "categorico",
+        "categorias": [
+            "nao",
+            "sim"
+        ]
+    }
+}
